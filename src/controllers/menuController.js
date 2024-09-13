@@ -43,7 +43,7 @@ const addMenu = async (req, res) => {
             let imgRelativePath = "/menus/";
             let imgUniqName = uuid.v4() + File_Extension;
             let imgUrl = `http://${currentIpAddress}:${port}${imgRelativePath}`;
-            let imgSavingPath = path.join(__dirname, "..", "..", "menus", imgUniqName);
+            let imgSavingPath = path.join(__dirname, "..", "menus", imgUniqName);
 
             fs.writeFileSync(imgSavingPath, decodedData);
 
@@ -162,7 +162,7 @@ const updateMenu = async (req, res) => {
 
             let oldImg = menu.thumbnail.imgName;
 
-            let oldImgPath = path.join(__dirname, "..", "..", "menus", oldImg);
+            let oldImgPath = path.join(__dirname, "..", "menus", oldImg);
 
             if (fs.existsSync(oldImgPath)) {
                 fs.unlinkSync(oldImgPath);
@@ -176,7 +176,7 @@ const updateMenu = async (req, res) => {
             let currentIpAddress = getCurrentIPAddress();
             let imgUniqName = uuid.v4() + File_Extension;
             let imgUrl = `http://${currentIpAddress}:${port}${imgRelativePath}`;
-            let imgSavingPath = path.join(__dirname, "..", "..", "menus", imgUniqName);
+            let imgSavingPath = path.join(__dirname, "..", "menus", imgUniqName);
 
             fs.writeFileSync(imgSavingPath, decodedImg);
 
@@ -222,7 +222,7 @@ const deleteMenu = async (req, res) => {
 
         let oldImg = menu.thumbnail.imgName;
 
-        let oldImgPath = path.join(__dirname, "..", "..", "menus", oldImg);
+        let oldImgPath = path.join(__dirname, "..", "menus", oldImg);
 
         if (fs.existsSync(oldImgPath)) {
             fs.unlinkSync(oldImgPath);

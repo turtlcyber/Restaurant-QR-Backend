@@ -2,9 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const cors = require("cors");
-const { port } = require('./src/config/config');
-const { connectToDB } = require('./src/config/db.config');
-const { errorHandler } = require('./src/uitls/errorHandler');
+const { port } = require('./config/config');
+const { connectToDB } = require('./config/db.config');
+const { errorHandler } = require('./uitls/errorHandler');
 
 const app = express();
 
@@ -15,13 +15,13 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(fileUpload());
 app.use(cors());
 
-const adminRoutes = require('./src/routes/v1/adminRoutes');
-const restaurantRoutes = require('./src/routes/v1/restaurantRoutes');
-const dashboardRoutes = require("./src/routes/v1/dashboardRoutes");
-const orderRoutes = require('./src/routes/v1/orderRoutes');
-const menuRoutes = require('./src/routes/v1/menuRoutes');
-const itemRoutes = require('./src/routes/v1/itemRoutes');
-const tableRoutes = require('./src/routes/v1/tableRoutes');
+const adminRoutes = require('./routes/v1/adminRoutes');
+const restaurantRoutes = require('./routes/v1/restaurantRoutes');
+const dashboardRoutes = require("./routes/v1/dashboardRoutes");
+const orderRoutes = require('./routes/v1/orderRoutes');
+const menuRoutes = require('./routes/v1/menuRoutes');
+const itemRoutes = require('./routes/v1/itemRoutes');
+const tableRoutes = require('./routes/v1/tableRoutes');
 
 app.use("/banners", express.static(__dirname + "/banners"));
 app.use("/items", express.static(__dirname + "/items"));

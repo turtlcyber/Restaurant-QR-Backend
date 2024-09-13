@@ -101,11 +101,11 @@ const updateBannerImages = async (req, res) => {
         let imgRelativePath = "/banners/";
         let imgUniqName = uuid.v4() + "." + bannerImage.name.split(".").pop();
         let imgFullUrl = `http://${currentIpAddress}:${port}${imgRelativePath}`;
-        let imgSavingPath = path.join(__dirname, "..", "..", "banners", imgUniqName);
+        let imgSavingPath = path.join(__dirname, "..", "banners", imgUniqName);
 
         if (!isNewPick) {
             let oldImage = restaurant.banners[index].imageName;
-            let oldImgPath = path.join(__dirname, "..", "..", "banners", oldImage);
+            let oldImgPath = path.join(__dirname, "..", "banners", oldImage);
 
             if (fs.existsSync(oldImgPath)) {
                 fs.unlinkSync(oldImgPath);
@@ -176,6 +176,13 @@ const deleteBannerImage = async (req, res) => {
         if (restaurant.banners.length) {
             for (let i = 0; i < restaurant.banners.length; i++) {
                 if (imageId === restaurant.banners[i]._id.toString()) {
+                    let imgName = restaurant.banners[i].imageName;
+                    let imgPath = path.join(__dirname, "..", "banners", imgName);
+
+                    if (fs.existsSync(imgPath)) {
+                        fs.unlinkSync(imgPath);
+                    }
+
                     let arr = restaurant.banners;
                     arr.splice(i, 1);
                     restaurant.banners = arr;

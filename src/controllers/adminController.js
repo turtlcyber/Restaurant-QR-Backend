@@ -16,41 +16,15 @@ const createAdmin = async (req, res) => {
             return res.status(400).send({ status: false, message: "All fields are required" });
         };
 
-        let { profilePic } = req.files;
-
-        if (!profilePic) {
-            return res.status(400).send({ status: false, message: "No profile pic uploaded" });
-        };
-
-        let hashedPassward = await bcrypt.hash(password, 10);
-        password = hashedPassward;
-
-        let currentIpAddress = getCurrentIPAddress();
-        let profilePicPath = "/adminImages/";
-        let profilePicName = uuid.v4() + "." + profilePic.name.split(".").pop();
-        let profilePicFullPath = `http://${currentIpAddress}:${port}${profilePicPath}`;
-
-        let picSavingPath = path.join(__dirname, "..", "..", "adminImages", profilePicName);
-
-        profilePic.mv(picSavingPath, (err) => {
-            if (err) {
-                console.log(err);
-            }
-        });
-
-        picObj = {
-            picName: profilePicName,
-            picPath: profilePicFullPath,
-        };
+        let hashedPassword = await bcrypt.hash(password, 10);
+        password = hashedPassword;
 
         let adminObj = {
-            adminId: generateRandomAlphaNumericID(26),
-            sessionToken: generateRandomAlphaNumericID(51),
+            userId: generateRandomAlphaNumericID(26),
             name,
             email,
             password,
             mobile,
-            profilePic: picObj,
         };
 
         let newAdmin = await adminModel.create(adminObj);

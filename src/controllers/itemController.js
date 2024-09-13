@@ -108,11 +108,11 @@ const addUpdateItemImages = async (req, res) => {
         let imgRelativePath = "/items/";
         let imgUniqName = uuid.v4() + "." + itemImage.name.split(".").pop();
         let imgFullUrl = `http://${currentIpAddress}:${port}${imgRelativePath}`;
-        let imgSavingPath = path.join(__dirname, "..", "..", "items", imgUniqName);
+        let imgSavingPath = path.join(__dirname, "..", "items", imgUniqName);
 
         if (!isNewPick) {
             let oldImageName = item.item_images[index].imgName;
-            let oldImagePath = path.join(__dirname, "..", "..", "items", oldImageName);
+            let oldImagePath = path.join(__dirname, "..", "items", oldImageName);
 
             if (fs.existsSync(oldImagePath)) {
                 fs.unlinkSync(oldImagePath);
@@ -353,7 +353,7 @@ const deleteItemById = async (req, res) => {
         let oldImgName = item.item_images.imgName;
 
         if (oldImgName) {
-            let oldImgPath = path.join(__dirname, "..", "..", "items", oldImgName);
+            let oldImgPath = path.join(__dirname, "..", "items", oldImgName);
 
             if (fs.existsSync(oldImgPath)) {
                 fs.unlinkSync(oldImgPath);

@@ -15,57 +15,20 @@ const userSchema = new mongoose.Schema(
             trim: true,
         },
 
-        profilePic: {
-            type: String,
-        },
-
-        gender: {
-            type: String,
-            enum: ["MALE", "FEMALE", "OTHER", "UNDEFINED"],
-            default: "UNDEFINED",
-        },
-
-        Address: {
-            address: {
-                type: String,
-                default: ""
-            },
-
-            apartment: {
-                type: String,
-                default: ""
-            },
-
-            city: {
-                type: String,
-                default: ""
-            },
-
-            post_code: {
-                type: String,
-                default: ""
-            },
-
-            state: {
-                type: String,
-                default: ""
-            }
-        },
-
         email: {
             type: String,
             default: ""
         },
 
-        phone: {
+        mobile: {
             type: String,
             default: ""
         },
 
-        date_of_birth: {
+        password: {
             type: String,
             default: ""
-        },
+        }
     },
     { timestamps: true }
 );

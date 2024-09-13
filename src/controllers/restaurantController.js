@@ -190,12 +190,12 @@ const addUpdateLogo = async (req, res) => {
         let imgRelativePath = "/banners/";
         let imgUniqName = uuid.v4() + File_Extension;
         let imgFullUrl = `http://${currentIpAddress}:${port}${imgRelativePath}`;
-        let imgSavingPath = path.join(__dirname, "..", "..", "banners", imgUniqName);
+        let imgSavingPath = path.join(__dirname, "..", "banners", imgUniqName);
 
         let oldImgName = restaurant.logo.logoName;
 
         if (oldImgName) {
-            let oldImgPath = path.join(__dirname, "..", "..", "banners", oldImgName);
+            let oldImgPath = path.join(__dirname, "..", "banners", oldImgName);
 
             if (fs.existsSync(oldImgPath)) {
                 fs.unlinkSync(oldImgPath);

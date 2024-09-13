@@ -379,7 +379,7 @@ const uploadItemImages = async (req, res) => {
             let currentIpAddress = getCurrentIPAddress();
             let imgUniqName = uuid.v4() + "." + img.name.split(".").pop();
             let imgUrl = `http://${currentIpAddress}:${port}${imgRelativePath}`;
-            let imgSavingPath = path.join(__dirname, "..", "..", "items", imgUniqName);
+            let imgSavingPath = path.join(__dirname, "..", "items", imgUniqName);
 
             img.mv(imgSavingPath, (err) => {
                 if (err) throw err;
@@ -435,7 +435,7 @@ const authItemImages = async (req, res) => {
             let imgUniqName = uuid.v4() + File_Extension;
             let imgUrl = `http://${currentIpAddress}:${port}${imgRelativePath}`;
 
-            let imgSavingPath = path.join(__dirname, "..", "..", "items", imgUniqName);
+            let imgSavingPath = path.join(__dirname, "..", "items", imgUniqName);
 
             fs.writeFileSync(imgSavingPath, decodedImg);
 
@@ -455,7 +455,7 @@ const authItemImages = async (req, res) => {
         let ipAddress = getCurrentIPAddress();
         let imageUniqName = uuid.v4() + "." + image.name.split(".").pop();
         let imageUrl = `http://${ipAddress}:${port}${relPath}`;
-        let imageSavingPath = path.join(__dirname, "..", "..", "banners", imageUniqName);
+        let imageSavingPath = path.join(__dirname, "..", "banners", imageUniqName);
 
         image.mv(imageSavingPath, (err) => {
             if (err) throw err;
